@@ -4,8 +4,8 @@ class CharactersResponse {
   CharactersResponse(this.data);
 
 
-  CharactersResponse.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  factory CharactersResponse.fromJson(Map<String, dynamic> json) {
+    return CharactersResponse(json['data'] != null ? new Data.fromJson(json['data']) : null);
   }
 
   Map<String, dynamic> toJson() {
@@ -25,17 +25,15 @@ class Data {
 
   Data({this.offset, this.limit, this.total, this.count, this.characters});
 
-  Data.fromJson(Map<String, dynamic> json) {
-    offset = json['offset'];
-    limit = json['limit'];
-    total = json['total'];
-    count = json['count'];
+  factory Data.fromJson(Map<String, dynamic> json) {
+    List<Character> chars = new List<Character>();
     if (json['results'] != null) {
-      characters = new List<Character>();
       json['results'].forEach((v) {
-        characters.add(new Character.fromJson(v));
+        chars.add(new Character.fromJson(v));
       });
     }
+
+    return Data(offset: json['offset'], limit: json['limit'], total: json['total'], count: json['count'], characters: chars);
   }
 
   Map<String, dynamic> toJson() {
@@ -63,13 +61,12 @@ class Character {
         this.description,
         this.thumbnail});
 
-  Character.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    thumbnail = json['thumbnail'] != null
-        ? new Thumbnail.fromJson(json['thumbnail'])
-        : null;
+  factory Character.fromJson(Map<String, dynamic> json) {
+    return Character(id: json['id'],
+        name: json['name'],
+        description: json['description'],
+        thumbnail: json['thumbnail'] != null ? new Thumbnail.fromJson(json['thumbnail']) : null);
+
   }
 
   Map<String, dynamic> toJson() {
@@ -87,9 +84,8 @@ class Thumbnail {
 
   Thumbnail({this.path, this.extension});
 
-  Thumbnail.fromJson(Map<String, dynamic> json) {
-    path = json['path'];
-    extension = json['extension'];
+  factory Thumbnail.fromJson(Map<String, dynamic> json) {
+    return new Thumbnail(path: json['path'], extension: json['extension']);
   }
 
   Map<String, dynamic> toJson() {
