@@ -10,46 +10,45 @@ class CharactersTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 4),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 16.0/9.0,
-              child: Image.network(character.thumbnail.path + "." + character.thumbnail.extension, fit: BoxFit.cover,),
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+        child: Row(children: <Widget>[
+          Flexible(
+            flex: 1,
+            child: Image.network(
+              character.thumbnail.path + "." + character.thumbnail.extension,
+              fit: BoxFit.fill,
+              height: 160.0,
+              width: 160.0,
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                        child: Text(character.name,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Text(character.description,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                          ),
-                        ),
-                      ),
-                    ],
+          ),
+          Flexible(
+            flex: 1,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                      '#${character.id}',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.grey[400],
+                      )
                   ),
-                ),
-              ],
-            ),
-          ],
-        ),
+                  Text(
+                      character.name,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                      )
+                  ),
+                ],
+              ),
+            )
+          )
+        ]),
       ),
     );
   }
