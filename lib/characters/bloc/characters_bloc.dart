@@ -6,7 +6,7 @@ import 'package:marvel_flutter_test/characters/network/api.dart';
 
 class CharactersBloc implements BlocBase {
   Api _api;
-  List<Character> characters;
+  List<Character> characters = [];
 
   final StreamController<List<Character>> _charactersController = StreamController<List<Character>>();
   Stream get outCharacters => _charactersController.stream;
@@ -32,7 +32,7 @@ class CharactersBloc implements BlocBase {
       //videos = await _api.search(search);
     } else {
      // videos += await _api.nextPage();
-      characters = await _api.getCharacters();
+      characters += await _api.getCharacters();
     }
 
     _charactersController.sink.add(characters);

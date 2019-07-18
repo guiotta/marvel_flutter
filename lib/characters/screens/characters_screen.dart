@@ -25,6 +25,14 @@ class CharactersScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 if (index < snapshot.data.length) {
                   return CharactersTile(snapshot.data[index]);
+                } else if (index > 1) {
+                  bloc.inSearch.add(null);
+                  return Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.red),),
+                  );
                 }
               },
             );

@@ -65,10 +65,10 @@ class Api {
 
       var response = await Dio().get(url, queryParameters: queryParameters);
 
+      page++;
+
       final jsonValue = jsonDecode(response.toString());
       return CharactersResponse.fromJson(jsonValue).data.characters;
-
-      page++;
 
     } catch (e) {
       print("An error has occuried: " + e.toString());
