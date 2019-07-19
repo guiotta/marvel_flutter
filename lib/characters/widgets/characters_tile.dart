@@ -15,11 +15,18 @@ class CharactersTile extends StatelessWidget {
         child: Row(children: <Widget>[
           Flexible(
             flex: 1,
-            child: Image.network(
-              character.thumbnail.path + "." + character.thumbnail.extension,
-              fit: BoxFit.fill,
-              height: 160.0,
-              width: 160.0,
+            child: Padding(
+              padding: EdgeInsets.only(left: 5, bottom: 5, top: 5),
+              child: new Container(
+                  width: 150.0,
+                  height: 150.0,
+                  decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: new DecorationImage(
+                          fit: BoxFit.fill,
+                          image: new NetworkImage(character.thumbnail.path + "." + character.thumbnail.extension,)
+                      )
+                  )),
             ),
           ),
           Flexible(

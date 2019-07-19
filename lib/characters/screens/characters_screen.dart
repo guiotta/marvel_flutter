@@ -31,7 +31,7 @@ class CharactersScreen extends StatelessWidget {
                     height: 40,
                     width: 40,
                     alignment: Alignment.center,
-                    child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.red),),
+                    child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),),
                   );
                 }
               },
