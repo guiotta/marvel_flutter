@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_flutter_test/characters/model/characters_response.dart';
+import 'package:marvel_flutter_test/details/screens/details_screen.dart';
 
 class CharactersTile extends StatelessWidget {
   final Character character;
@@ -9,7 +10,13 @@ class CharactersTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DetailsScreen(this.character)
+            ));
+      },
       child: Card(
         margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
         child: Row(children: <Widget>[
