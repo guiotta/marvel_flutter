@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:convert/convert.dart';
 import 'package:dio/dio.dart';
 import 'package:marvel_flutter_test/characters/model/character.dart';
 import 'package:marvel_flutter_test/characters/model/characters_response.dart';
-import 'package:crypto/crypto.dart' as crypto;
 import 'package:marvel_flutter_test/constraint/constraints.dart';
 import 'package:marvel_flutter_test/constraint/keys.dart';
+import 'package:marvel_flutter_test/cryptography/md5.dart';
 
 class Api {
   final itemsPerPage = 20;
@@ -18,7 +17,7 @@ class Api {
 
   Future<CharactersResponse> getAllCharacters() async {
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-    final hash = _generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+    final hash = Md5().execute(timestamp + Keys.privateKey + Keys.publicKey).toString();
 
     try{
       offset = (page * itemsPerPage);
@@ -48,7 +47,7 @@ class Api {
 
   Future<List<Character>> getCharacters() async {
     final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-    final hash = _generateMd5(timestamp + Keys.privateKey + Keys.publicKey).toString();
+    final hash = Md5().execute(timestamp + Keys.privateKey + Keys.publicKey).toString();
 
     try{
       offset = (page * itemsPerPage);
@@ -74,12 +73,5 @@ class Api {
     } catch (e) {
       print("An error has occuried: " + e.toString());
     }
-  }
-
-  _generateMd5(String data) {
-    var content = new Utf8Encoder().convert(data);
-    var md5 = crypto.md5;
-    var digest = md5.convert(content);
-    return hex.encode(digest.bytes);
   }
 }
