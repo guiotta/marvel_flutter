@@ -1,3 +1,5 @@
+import 'package:marvel_flutter_test/characters/model/data.dart';
+
 class CharactersResponse {
   Data data;
 
@@ -13,85 +15,5 @@ class CharactersResponse {
     if (this.data != null) {
       data['data'] = this.data.toJson();
     }
-  }
-}
-
-class Data {
-  int offset;
-  int limit;
-  int total;
-  int count;
-  List<Character> characters;
-
-  Data({this.offset, this.limit, this.total, this.count, this.characters});
-
-  factory Data.fromJson(Map<String, dynamic> json) {
-    List<Character> chars = new List<Character>();
-    if (json['results'] != null) {
-      json['results'].forEach((v) {
-        chars.add(new Character.fromJson(v));
-      });
-    }
-
-    return Data(offset: json['offset'], limit: json['limit'], total: json['total'], count: json['count'], characters: chars);
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['offset'] = this.offset;
-    data['limit'] = this.limit;
-    data['total'] = this.total;
-    data['count'] = this.count;
-    if (this.characters != null) {
-      data['results'] = this.characters.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Character {
-  int id;
-  String name;
-  String description;
-  Thumbnail thumbnail;
-
-  Character(
-      {this.id,
-        this.name,
-        this.description,
-        this.thumbnail});
-
-  factory Character.fromJson(Map<String, dynamic> json) {
-    return Character(id: json['id'],
-        name: json['name'],
-        description: json['description'],
-        thumbnail: json['thumbnail'] != null ? new Thumbnail.fromJson(json['thumbnail']) : null);
-
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['description'] = this.description;
-    return data;
-  }
-}
-
-class Thumbnail {
-  String path;
-  String extension;
-
-  Thumbnail({this.path, this.extension});
-
-  factory Thumbnail.fromJson(Map<String, dynamic> json) {
-    return new Thumbnail(path: json['path'], extension: json['extension']);
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['path'] = this.path;
-    data['extension'] = this.extension;
-    return data;
   }
 }

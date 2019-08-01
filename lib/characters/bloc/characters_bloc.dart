@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:marvel_flutter_test/characters/model/characters_response.dart';
+import 'package:marvel_flutter_test/characters/model/character.dart';
 import 'package:marvel_flutter_test/characters/network/api.dart';
 
 class CharactersBloc implements BlocBase {

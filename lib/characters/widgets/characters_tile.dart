@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marvel_flutter_test/characters/model/characters_response.dart';
+import 'package:marvel_flutter_test/characters/model/character.dart';
 import 'package:marvel_flutter_test/details/screens/details_screen.dart';
 
 class CharactersTile extends StatelessWidget {

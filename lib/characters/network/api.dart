@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:convert/convert.dart';
 import 'package:dio/dio.dart';
+import 'package:marvel_flutter_test/characters/model/character.dart';
 import 'package:marvel_flutter_test/characters/model/characters_response.dart';
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:marvel_flutter_test/constraint/constraints.dart';
