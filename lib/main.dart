@@ -11,6 +11,10 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       bloc: CharactersBloc(),
       child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: Colors.red,
+        ),
+        debugShowCheckedModeBanner: false,
         title: 'Marvel Characters - Flutter App',
         home: CharactersScreen(),
       ),
