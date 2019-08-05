@@ -91,6 +91,11 @@ class Comic {
     data['pageCount'] = this.pageCount;
     return data;
   }
+
+  @override
+  String toString() {
+    return '$title - $description';
+  }
 }
 
 class Thumbnail {

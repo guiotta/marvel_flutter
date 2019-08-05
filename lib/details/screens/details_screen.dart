@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_flutter_test/characters/model/character.dart';
+import 'package:marvel_flutter_test/details/network/api.dart';
+import 'package:marvel_flutter_test/details/widgets/comic_list.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Character character;
@@ -8,6 +10,13 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Api api = Api();
+    api.getComics(this.character.id).then((value) {
+      value.forEach((comic) {
+        print(comic.toString());
+      });
+    });
+
     final String description = character.description.isNotEmpty ? character.description : "No description.";
 
     return Scaffold(
@@ -40,6 +49,7 @@ class DetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
+            ComicList(character.id),
           ],
         ),
       ),

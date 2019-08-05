@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:marvel_flutter_test/characters/bloc/characters_bloc.dart';
 import 'package:marvel_flutter_test/characters/screens/characters_screen.dart';
 
+import 'details/bloc/details_bloc.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,13 +12,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       bloc: CharactersBloc(),
-      child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: Colors.red,
+      child: BlocProvider(
+        bloc: DetailsBloc(),
+        child: MaterialApp(
+          theme: ThemeData(
+            primaryColor: Colors.red,
+          ),
+          debugShowCheckedModeBanner: false,
+          title: 'Marvel Characters - Flutter App',
+          home: CharactersScreen(),
         ),
-        debugShowCheckedModeBanner: false,
-        title: 'Marvel Characters - Flutter App',
-        home: CharactersScreen(),
       ),
     );
   }
