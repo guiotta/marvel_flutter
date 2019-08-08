@@ -8,12 +8,17 @@ class ComicTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (this.comic.title == null) {
+      return Container();
+    }
     return Container(
       padding: EdgeInsets.all(8),
       child: Column(
         children: <Widget>[
-          Text(comic.title),
-          Text(comic.description),
+          Text(comic.title,
+            style: TextStyle(
+              color: Colors.white
+            ),),
         ],
       ),
     );

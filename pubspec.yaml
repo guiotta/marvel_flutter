@@ -27,6 +27,7 @@ dependencies:
   dio: ^2.0.0
   crypto: ^2.0.6
   bloc_pattern: ^1.5.2
+  rxdart: ^0.22.1
 
 dev_dependencies:
   flutter_test:
