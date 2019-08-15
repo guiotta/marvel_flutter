@@ -13,12 +13,28 @@ class ComicTile extends StatelessWidget {
     }
     return Container(
       padding: EdgeInsets.all(8),
-      child: Column(
+      child: Row(
         children: <Widget>[
-          Text(comic.title,
-            style: TextStyle(
-              color: Colors.white
-            ),),
+          Container(
+            width: 100.0,
+            height: 100.0,
+            decoration: new BoxDecoration(
+              shape: BoxShape.circle,
+              image: new DecorationImage(
+                fit: BoxFit.fill,
+                image: new NetworkImage(comic.thumbnail.path + "." + comic.thumbnail.extension)
+              ),
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Text(comic.title,
+                style: TextStyle(
+                    color: Colors.white
+                ),),
+            ),
+          ),
         ],
       ),
     );
